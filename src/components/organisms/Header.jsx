@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
-import { AuthContext } from "@/App";
+import { useAuth } from "@/layouts/Root";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 
@@ -10,8 +10,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user } = useSelector((state) => state.user);
-  const { logout } = useContext(AuthContext);
+const { user } = useSelector((state) => state.user);
+  const { logout } = useAuth();
 
   const navItems = [
     { path: "/dashboard", label: "Dashboard", icon: "LayoutDashboard" },
